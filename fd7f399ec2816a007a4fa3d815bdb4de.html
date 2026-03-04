@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>43岁女神减脂增肌打卡计划</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            opacity: 0.95;
+            font-size: 14px;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 3px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #6c757d;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-tab.active {
+            color: #f5576c;
+            border-bottom-color: #f5576c;
+            background: white;
+        }
+        
+        .content {
+            padding: 20px;
+            min-height: 500px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .day-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .day-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #d63031;
+        }
+        
+        .day-check {
+            width: 28px;
+            height: 28px;
+            border: 3px solid #d63031;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .day-check.checked {
+            background: #d63031;
+            color: white;
+        }
+        
+        .meal-section {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .meal-title {
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meal-icon {
+            font-size: 20px;
+        }
+        
+        .food-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px dashed #dfe6e9;
+            font-size: 14px;
+        }
+        
+        .food-item:last-child {
+            border-bottom: none;
+        }
+        
+        .food-name {
+            color: #2d3436;
+        }
+        
+        .food-gram {
+            color: #636e72;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .workout-card {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .workout-type {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0984e3;
+            margin-bottom: 5px;
+        }
+        
+        .workout-subtitle {
+            color: #636e72;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        
+        .exercise-item {
+            background: white;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .exercise-info {
+            flex: 1;
+        }
+        
+        .exercise-name {
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 4px;
+        }
+        
+        .exercise-detail {
+            font-size: 12px;
+            color: #636e72;
+        }
+        
+        .exercise-check {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #74b9ff;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            transition: all 0.3s;
+        }
+        
+        .exercise-check.checked {
+            background: #0984e3;
+            border-color: #0984e3;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .input-group {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .input-label {
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn-primary {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .tips-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #856404;
+        }
+        
+        .tips-box strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .calendar-day:hover {
+            background: #e9ecef;
+        }
+        
+        .calendar-day.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #764ba2;
+        }
+        
+        .calendar-day.completed {
+            border-color: #00b894;
+            background: #e8f5e9;
+        }
+        
+        .day-number {
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .day-status {
+            font-size: 10px;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 减脂增肌打卡计划</h1>
+            <p>目标：2个月减重5.7kg + 增肌1kg | 当前：第<span id="currentWeek">1</span>周</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+        
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="switchTab('diet')">🥗 饮食</div>
+            <div class="nav-tab" onclick="switchTab('workout')">💪 训练</div>
+            <div class="nav-tab" onclick="switchTab('progress')">📊 记录</div>
+        </div>
+        
+        <div class="content">
+            <!-- 饮食标签页 -->
+            <div id="diet" class="tab-content active">
+                <div class="calendar-grid" id="dietCalendar"></div>
+                <div id="dietContent"></div>
+            </div>
+            
+            <!-- 训练标签页 -->
+            <div id="workout" class="tab-content">
+                <div class="calendar-grid" id="workoutCalendar"></div>
+                <div id="workoutContent"></div>
+            </div>
+            
+            <!-- 记录标签页 -->
+            <div id="progress" class="tab-content">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-label">当前体重</div>
+                        <div class="stat-value" id="currentWeight">56.7</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">目标体重</div>
+                        <div class="stat-value">51.0</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">今日体重 (kg)</label>
+                    <input type="number" step="0.1" class="input-field" id="weightInput" placeholder="56.7">
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">腰围 (cm)</label>
+                    <input type="number" step="0.5" class="input-field" id="waistInput" placeholder="可选">
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">今日感受/备注</label>
+                    <input type="text" class="input-field" id="noteInput" placeholder="例如：今天很有精神！">
+                </div>
+                
+                <button class="btn-primary" onclick="saveProgress()">💾 保存记录</button>
+                
+                <div class="tips-box">
+                    <strong>💡 称重提示</strong>
+                    每天早起空腹、排便后、穿轻薄衣物称重，数据最准确。不要每天纠结数字，看周趋势！
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 7天饮食菜单数据
+        const dietPlan = [
+            {
+                day: 1,
+                name: "周一：经典鸡胸日",
+                meals: [
+                    { name: "早餐", icon: "🌅", foods: [
+                        { name: "鸡蛋（全蛋）", gram: "2个(100g)" },
+                        { name: "鸡蛋白", gram: "2个(70g)" },
+                        { name: "燕麦片", gram: "40g" },
+                        { name: "脱脂牛奶", gram: "200ml" }
+                    ]},
+                    { name: "午餐", icon: "🌞", foods: [
+                        { name: "杂粮饭（生米）", gram: "50g" },
+                        { name: "鸡胸肉（生）", gram: "120g" },
+                        { name: "菠菜", gram: "200g" },
+                        { name: "橄榄油", gram: "5g" }
+                    ]},
+                    { name: "晚餐", icon: "🌙", foods: [
+                        { name: "杂粮饭（生米）", gram: "30g" },
+                        { name: "北豆腐", gram: "150g" },
+                        { name: "西兰花", gram: "250g" },
+                        { name: "橄榄油", gram: "3g" }
+                    ]},
+                    { name: "加餐", icon: "🥜", foods: [
+                        { name: "希腊酸奶（无糖）", gram: "100g" }
+                    ]}
+                ]
+            },
+            {
+                day: 2,
+                name: "周二：鱼肉轻盈日",
+                meals: [
+                    { name: "早餐", icon: "🌅", foods: [
+                        { name: "鸡蛋（全蛋）", gram: "2个(100g)" },
+                        { name: "全麦面包", gram: "2片(60g)" },
+                        { name: "脱脂牛奶", gram: "200ml" }
+                    ]},
+                    { name: "午餐", icon: "🌞", foods: [
+                        { name: "红薯（生）", gram: "150g" },
+                        { name: "鲈鱼（生）", gram: "130g" },
+                        { name: "空心菜", gram: "200g" },
+                        { name: "橄榄油", gram: "5g" }
+                    ]},
+                    { name: "晚餐", icon: "🌙", foods: [
+                        { name: "玉米（可食部）", gram: "100g" },
+                        { name: "虾仁（生）", gram: "130g" },
+                        { name: "生菜", gram: "250g" },
+                        { name: "橄榄油", gram: "3g" }
+                    ]},
+                    { name: "加餐", icon: "🥜", foods: [
+                        { name: "鸡蛋白", gram: "2个" }
+                    ]}
+                ]
+            },
+            {
+                day: 3,
+                name: "周三：牛肉力量日（练前）",
+                meals: [
+                    { name: "早餐", icon: "🌅", foods: [
+                        { name: "鸡蛋（全蛋）", gram: "2个(100g)" },
+                        { name: "燕麦片", gram: "50g" },
+                        { name: "脱脂牛奶", gram: "200ml" }
+                    ]},
+                    { name: "午餐", icon: "🌞", foods: [
+                        { name: "杂粮饭（生米）", gram: "60g" },
+                        { name: "瘦牛肉（生）", gram: "100g" },
+                        { name: "油菜", gram: "200g" },
+                        { name: "橄榄油", gram: "5g" }
+                    ]},
+                    { name: "练前加餐", icon: "⚡", foods: [
+                        { name: "香蕉", gram: "1根(100g)" },
+                        { name: "鸡蛋白", gram: "1个" }
+                    ]},
+                    { name: "晚餐（练后）", icon: "💪", foods: [
+                        { name: "杂粮饭（生米）", gram: "40g" },
+                        { name: "鸡胸肉（生）", gram: "100g" },
+                        { name: "芦笋", gram: "200g" },
+                        { name: "橄榄油", gram: "3g" }
+                    ]}
+                ]
+            },
+            {
+                day: 4,
+                name: "周四：豆腐素食日",
+                meals: [
+                    { name: "早餐", icon: "🌅", foods: [
+                        { name: "鸡蛋（全蛋）", gram: "2个(100g)" },
+                        { name: "鸡蛋白", gram: "2个(70g)" },
+                        { name: "红薯（生）", gram: "100g" },
+                        { name: "无糖豆浆", gram: "250ml" }
+                    ]},
+                    { name: "午餐", icon: "🌞", foods: [
+                        { name: "杂粮饭（生米）", gram: "50g" },
+                        { name: "北豆腐", gram: "200g" },
+                        { name: "芹菜", gram: "200g" },
+                        { name: "橄榄油", gram: "5g" }
+                    ]},
+                    { name: "晚餐", icon: "🌙", foods: [
+                        { name: "玉米（可食部）", gram: "80g" },
+                        { name: "鱼肉（生）", gram: "100g" },
+                        { name: "冬瓜", gram: "300g" },
+                        { name: "橄榄油", gram: "3g" }
+                    ]},
+                    { name: "加餐", icon: "🥜", foods: [
+                        { name: "杏仁", gram: "15g" }
+                    ]}
+                ]
+            },
+            {
+                day: 5,
+                name: "周五：虾肉蛋白日（练前）",
+                meals: [
+                    { name: "早餐", icon: "🌅", foods: [
+                        { name: "鸡蛋（全蛋）", gram: "2个(100g)" },
+                        { name: "燕麦片", gram: "40g" },
+                        { name: "脱脂牛奶", gram: "200ml" }
+                    ]},
+                    { name: "午餐", icon: "🌞", foods: [
+                        { name: "杂粮饭（生米）", gram: "50g" },
+                        { name: "虾仁（生）", gram: "130g" },
+                        { name: "油麦菜", gram: "200g" },
+                        { name: "橄榄油", gram: "5g" }
+                    ]},
+                    { name: "练前加餐", icon: "⚡", foods: [
+                        { name: "全麦面包", gram: "1片(30g)" },
+                        { name: "鸡蛋白", gram: "1个" }
+                    ]},
+                    { name: "晚餐（练后）", icon: "💪", foods: [
+                        { name: "红薯（生）", gram: "100g" },
+                        { name: "瘦牛肉（生）", gram: "80g" },
+                        { name: "韭菜", gram: "200g" },
+                        { name: "橄榄油", gram: "3g" }
+                    ]}
+                ]
+            },
+            {
+                day: 6,
+                name: "周六：均衡恢复日",
+                meals: [
+                    { name: "早餐", icon: "🌅", foods: [
+                        { name: "鸡蛋（全蛋）", gram: "2个(100g)" },
+                        { name: "鸡蛋白", gram: "2个(70g)" },
+                        { name: "全麦面包", gram: "1片(30g)" },
+                        { name: "脱脂牛奶", gram: "200ml" }
+                    ]},
+                    { name: "午餐", icon: "🌞", foods: [
+                        { name: "杂粮饭（生米）", gram: "50g" },
+                        { name: "鸡胸肉（生）", gram: "100g" },
+                        { name: "西葫芦", gram: "200g" },
+                        { name: "橄榄油", gram: "5g" }
+                    ]},
+                    { name: "晚餐", icon: "🌙", foods: [
+                        { name: "杂粮饭（生米）", gram: "30g" },
+                        { name: "北豆腐", gram: "150g" },
+                        { name: "海带", gram: "150g" },
+                        { name: "黄瓜", gram: "150g" },
+                        { name: "橄榄油", gram: "3g" }
+                    ]},
+                    { name: "加餐", icon: "🥜", foods: [
+                        { name: "希腊酸奶（无糖）", gram: "100g" }
+                    ]}
+                ]
+            },
+            {
+                day: 7,
+                name: "周日：轻松低碳日",
+                meals: [
+                    { name: "早餐", icon: "🌅", foods: [
+                        { name: "鸡蛋（全蛋）", gram: "3个(150g)" },
+                        { name: "鸡蛋白", gram: "2个(70g)" },
+                        { name: "脱脂牛奶", gram: "200ml" }
+                    ]},
+                    { name: "午餐", icon: "🌞", foods: [
+                        { name: "红薯（生）", gram: "100g" },
+                        { name: "鱼肉（生）", gram: "120g" },
+                        { name: "生菜", gram: "250g" },
+                        { name: "橄榄油", gram: "5g" }
+                    ]},
+                    { name: "晚餐", icon: "🌙", foods: [
+                        { name: "鸡胸肉（生）", gram: "100g" },
+                        { name: "菠菜", gram: "300g" },
+                        { name: "菌菇类", gram: "100g" },
+                        { name: "橄榄油", gram: "3g" }
+                    ]},
+                    { name: "加餐", icon: "🥜", foods: [
+                        { name: "核桃", gram: "15g" }
+                    ]}
+                ]
+            }
+        ];
+
+        // 训练计划数据
+        const workoutPlan = [
+            {
+                day: 3,
+                name: "周三：上肢力量训练",
+                subtitle: "推+拉组合 | 组间休息60-90秒",
+                exercises: [
+                    { name: "热身：跑步机快走", detail: "5分钟，坡度3，速度5km/h", sets: "1组" },
+                    { name: "杠铃/哑铃卧推", detail: "胸大肌 | 4组×12次 | 重量自选", sets: "4组" },
+                    { name: "哑铃划船", detail: "背部 | 4组×12次/侧 | 核心收紧", sets: "4组" },
+                    { name: "哑铃肩推", detail: "肩部 | 3组×12次 | 不要耸肩", sets: "3组" },
+                    { name: "高位下拉", detail: "背阔肌 | 3组×15次 | 控制下放", sets: "3组" },
+                    { name: "哑铃弯举", detail: "肱二头肌 | 3组×12次 | 顶峰收缩", sets: "3组" },
+                    { name: "绳索下压", detail: "肱三头肌 | 3组×15次 | 肘部固定", sets: "3组" },
+                    { name: "平板支撑", detail: "核心 | 3组×30-45秒 | 保持呼吸", sets: "3组" },
+                    { name: "拉伸放松", detail: "胸、背、肩拉伸 | 每个动作30秒", sets: "1组" }
+                ]
+            },
+            {
+                day: 5,
+                name: "周五：下肢力量训练",
+                subtitle: "臀腿主导 | 组间休息90-120秒",
+                exercises: [
+                    { name: "热身：椭圆机", detail: "5分钟，阻力3-4", sets: "1组" },
+                    { name: "杠铃深蹲/史密斯深蹲", detail: "股四头肌+臀大肌 | 4组×10-12次", sets: "4组" },
+                    { name: "罗马尼亚硬拉", detail: "腘绳肌+臀部 | 4组×12次 | 膝盖微屈", sets: "4组" },
+                    { name: "保加利亚分腿蹲", detail: "单腿力量 | 3组×10次/腿 | 可扶支撑", sets: "3组" },
+                    { name: "腿举机", detail: "股四头肌 | 3组×15次 | 不要锁死膝盖", sets: "3组" },
+                    { name: "臀桥/臀推", detail: "臀大肌 | 4组×15次 | 顶峰停留2秒", sets: "4组" },
+                    { name: "坐姿腿弯举", detail: "腘绳肌 | 3组×15次 | 控制速度", sets: "3组" },
+                    { name: "提踵（小腿）", detail: "小腿肌群 | 3组×20次 | 可负重", sets: "3组" },
+                    { name: "死虫式", detail: "核心稳定 | 3组×10次/侧 | 腰贴地面", sets: "3组" },
+                    { name: "拉伸放松", detail: "臀、腿、髋拉伸 | 每个动作30秒", sets: "1组" }
+                ]
+            }
+        ];
+
+        // 其他日子有氧建议
+        const cardioDays = [
+            { day: 1, name: "周一", activity: "快走/慢跑 30分钟 | 心率120-130", type: "有氧" },
+            { day: 2, name: "周二", activity: "休息日 | 可散步6000步", type: "休息" },
+            { day: 4, name: "周四", activity: "快走 40分钟 | 坡度走更佳", type: "有氧" },
+            { day: 6, name: "周六", activity: "瑜伽/拉伸 30分钟 | 或游泳", type: "恢复" },
+            { day: 7, name: "周日", activity: "完全休息 | 准备下周", type: "休息" }
+        ];
+
+        let currentDietDay = 1;
+        let currentWorkoutDay = 3;
+        let completedDays = JSON.parse(localStorage.getItem('completedDays') || '[]');
+        let completedExercises = JSON.parse(localStorage.getItem('completedExercises') || '{}');
+
+        // 初始化
+        function init() {
+            renderDietCalendar();
+            renderWorkoutCalendar();
+            showDietDay(1);
+            showWorkoutDay(3);
+            updateProgress();
+        }
+
+        // 切换标签页
+        function switchTab(tabName) {
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // 渲染饮食日历
+        function renderDietCalendar() {
+            const calendar = document.getElementById('dietCalendar');
+            calendar.innerHTML = '';
+            
+            for (let i = 1; i <= 7; i++) {
+                const dayDiv = document.createElement('div');
+                dayDiv.className = `calendar-day ${i === currentDietDay ? 'active' : ''} ${completedDays.includes('diet-'+i) ? 'completed' : ''}`;
+                dayDiv.innerHTML = `
+                    <div class="day-number">${i}</div>
+                    <div class="day-status">${completedDays.includes('diet-'+i) ? '✓' : ''}</div>
+                `;
+                dayDiv.onclick = () => {
+                    currentDietDay = i;
+                    renderDietCalendar();
+                    showDietDay(i);
+                };
+                calendar.appendChild(dayDiv);
+            }
+        }
+
+        // 渲染训练日历
+        function renderWorkoutCalendar() {
+            const calendar = document.getElementById('workoutCalendar');
+            calendar.innerHTML = '';
+            
+            const workoutDays = [3, 5];
+            const dayNames = ['一', '二', '三', '四', '五', '六', '日'];
+            
+            for (let i = 1; i <= 7; i++) {
+                const isWorkoutDay = workoutDays.includes(i);
+                const dayDiv = document.createElement('div');
+                dayDiv.className = `calendar-day ${i === currentWorkoutDay ? 'active' : ''} ${completedDays.includes('workout-'+i) ? 'completed' : ''}`;
+                if (!isWorkoutDay) dayDiv.style.opacity = '0.5';
+                
+                dayDiv.innerHTML = `
+                    <div class="day-number">${dayNames[i-1]}</div>
+                    <div class="day-status">${isWorkoutDay ? (completedDays.includes('workout-'+i) ? '✓' : '💪') : (i === 2 || i === 7 ? '休' : '走')}</div>
+                `;
+                
+                if (isWorkoutDay) {
+                    dayDiv.onclick = () => {
+                        currentWorkoutDay = i;
+                        renderWorkoutCalendar();
+                        showWorkoutDay(i);
+                    };
+                }
+                calendar.appendChild(dayDiv);
+            }
+        }
+
+        // 显示指定天的饮食
+        function showDietDay(day) {
+            const plan = dietPlan.find(p => p.day === day);
+            const content = document.getElementById('dietContent');
+            
+            let mealsHtml = plan.meals.map(meal => `
+                <div class="meal-section">
+                    <div class="meal-title">
+                        <span class="meal-icon">${meal.icon}</span>
+                        ${meal.name}
+                    </div>
+                    ${meal.foods.map(food => `
+                        <div class="food-item">
+                            <span class="food-name">${food.name}</span>
+                            <span class="food-gram">${food.gram}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+            
+            content.innerHTML = `
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-title">${plan.name}</div>
+                        <div class="day-check ${completedDays.includes('diet-'+day) ? 'checked' : ''}" onclick="toggleDietDay(${day})">
+                            ${completedDays.includes('diet-'+day) ? '✓' : ''}
+                        </div>
+                    </div>
+                    <div style="font-size: 12px; color: #636e72; margin-bottom: 10px;">
+                        总热量：~1450kcal | 蛋白质：~110g | 碳水：~130g | 脂肪：~45g
+                    </div>
+                </div>
+                ${mealsHtml}
+                <div class="tips-box">
+                    <strong>💡 今日重点</strong>
+                    ${day === 3 || day === 5 ? '训练日！练前1.5小时吃加餐，练后30分钟内吃完晚餐。' : 
+                      day === 2 || day === 7 ? '休息日，保持轻度活动，严格控制饮食。' : 
+                      '有氧日，餐前30分钟完成运动，多喝水！'}
+                </div>
+            `;
+        }
+
+        // 显示指定天的训练
+        function showWorkoutDay(day) {
+            const content = document.getElementById('workoutContent');
+            const workout = workoutPlan.find(w => w.day === day);
+            
+            if (!workout) {
+                // 显示有氧/休息日
+                const cardio = cardioDays.find(c => c.day === day);
+                content.innerHTML = `
+                    <div class="workout-card" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                        <div class="workout-type" style="color: #d63031;">${cardio.name}：${cardio.type}</div>
+                        <div class="workout-subtitle">${cardio.activity}</div>
+                        <div style="background: white; border-radius: 10px; padding: 15px; margin-top: 15px;">
+                            <div style="font-weight: 600; margin-bottom: 10px;">📝 执行要点：</div>
+                            <ul style="font-size: 13px; color: #636e72; padding-left: 18px; line-height: 1.8;">
+                                <li>保持心率在燃脂区间（220-43）×60%~70% = <strong>106-124次/分</strong></li>
+                                <li>呼吸均匀，能说话但不能唱歌的强度</li>
+                                <li>穿舒适的运动鞋，保护膝盖</li>
+                                <li>运动后及时补充水分</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="day-card" style="margin-top: 15px;">
+                        <div class="day-header">
+                            <div class="day-title">完成打卡</div>
+                            <div class="day-check ${completedDays.includes('workout-'+day) ? 'checked' : ''}" onclick="toggleWorkoutDay(${day})">
+                                ${completedDays.includes('workout-'+day) ? '✓' : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            const key = 'workout-' + day;
+            const completed = completedExercises[key] || [];
+            
+            let exercisesHtml = workout.exercises.map((ex, idx) => `
+                <div class="exercise-item">
+                    <div class="exercise-info">
+                        <div class="exercise-name">${ex.name}</div>
+                        <div class="exercise-detail">${ex.detail}</div>
+                    </div>
+                    <div class="exercise-check ${completed.includes(idx) ? 'checked' : ''}" onclick="toggleExercise(${day}, ${idx})">
+                        ${completed.includes(idx) ? '✓' : ''}
+                    </div>
+                </div>
+            `).join('');
+            
+            content.innerHTML = `
+                <div class="workout-card">
+                    <div class="day-header" style="margin-bottom: 15px;">
+                        <div>
+                            <div class="workout-type">${workout.name}</div>
+                            <div class="workout-subtitle">${workout.subtitle}</div>
+                        </div>
+                        <div class="day-check ${completedDays.includes('workout-'+day) ? 'checked' : ''}" onclick="toggleWorkoutDay(${day})" style="border-color: #0984e3; background: ${completedDays.includes('workout-'+day) ? '#0984e3' : 'white'}; color: ${completedDays.includes('workout-'+day) ? 'white' : 'transparent'};">
+                            ${completedDays.includes('workout-'+day) ? '✓' : ''}
+                        </div>
+                    </div>
+                </div>
+                ${exercisesHtml}
+                <div class="tips-box">
+                    <strong>⚠️ 安全提示</strong>
+                    43岁训练重点：热身充分、动作标准优先于重量、注意膝盖和腰椎保护、有任何疼痛立即停止。建议初次训练请教练指导动作！
+                </div>
+            `;
+        }
+
+        // 切换饮食打卡
+        function toggleDietDay(day) {
+            const key = 'diet-' + day;
+            const idx = completedDays.indexOf(key);
+            if (idx > -1) {
+                completedDays.splice(idx, 1);
+            } else {
+                completedDays.push(key);
+            }
+            localStorage.setItem('completedDays', JSON.stringify(completedDays));
+            renderDietCalendar();
+            showDietDay(day);
+            updateProgress();
+        }
+
+        // 切换训练打卡
+        function toggleWorkoutDay(day) {
+            const key = 'workout-' + day;
+            const idx = completedDays.indexOf(key);
+            if (idx > -1) {
+                completedDays.splice(idx, 1);
+            } else {
+                completedDays.push(key);
+            }
+            localStorage.setItem('completedDays', JSON.stringify(completedDays));
+            renderWorkoutCalendar();
+            showWorkoutDay(day);
+            updateProgress();
+        }
+
+        // 切换单个动作打卡
+        function toggleExercise(day, exerciseIdx) {
+            const key = 'workout-' + day;
+            if (!completedExercises[key]) {
+                completedExercises[key] = [];
+            }
+            
+            const idx = completedExercises[key].indexOf(exerciseIdx);
+            if (idx > -1) {
+                completedExercises[key].splice(idx, 1);
+            } else {
+                completedExercises[key].push(exerciseIdx);
+            }
+            
+            localStorage.setItem('completedExercises', JSON.stringify(completedExercises));
+            showWorkoutDay(day);
+        }
+
+        // 更新进度
+        function updateProgress() {
+            const totalDays = 14;
+            const progress = (completedDays.length / totalDays) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // 保存进度记录
+        function saveProgress() {
+            const weight = document.getElementById('weightInput').value;
+            const waist = document.getElementById('waistInput').value;
+            const note = document.getElementById('noteInput').value;
+            
+            if (weight) {
+                document.getElementById('currentWeight').textContent = weight;
+                
+                const records = JSON.parse(localStorage.getItem('progressRecords') || '[]');
+                records.push({
+                    date: new Date().toLocaleDateString(),
+                    weight: weight,
+                    waist: waist,
+                    note: note
+                });
+                localStorage.setItem('progressRecords', JSON.stringify(records));
+                
+                alert('记录已保存！继续保持！💪');
+                document.getElementById('weightInput').value = '';
+                document.getElementById('waistInput').value = '';
+                document.getElementById('noteInput').value = '';
+            } else {
+                alert('请输入体重数据');
+            }
+        }
+
+        // 页面加载时初始化
+        window.onload = init;
+    </script>
+</body>
+</html>
